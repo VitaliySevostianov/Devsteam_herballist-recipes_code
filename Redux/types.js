@@ -1,0 +1,7 @@
+export const FILL_PAGE                  = 'FILL_PAGE'
+export const FILL_IMAGES                = 'FILL_IMAGES'
+export const FILL_PREV                  = 'FILL_PREV'
+export const FILL_PREV_DATE             = 'GET_PREV_DATE'
+export const CHANGE_IS_LATER_DAYS_GONE  = 'CHANGE_IS_LATER_DAYS_GONE'
+export const USER_WANT_RATE             = 'USER_WANT_RATE'
+export const UPDATE_LAUNCH_COUNTER      = 'UPDATE_LAUNCH_COUNTER'
