@@ -17,10 +17,15 @@ export const getData = (store, table) => {
                 items.push({
                     ...rows.item(i),
                 });
-                if(rows.item(i).img_path == undefined){
-                    images[i] = `${(rows.item(i).html.match(/\/\w{4,9}\/\d{1,5}.jpg/))}`
+                if(table == 'Article'){
+                    if(rows.item(i).img_path == null){
+                        images[i] = `FILLER`
+                    }else{
+                        images[i] = `${(rows.item(i).img_path)}`
+                    }
+                    
                 }else{
-                    images[i] = `${rows.item(i).img_path}`
+                    images[i] = `${(rows.item(i).html.match(/\/\w*\/\d*.jpg/))}`
                 }
                 images[i] = images[i].replace(/\.jpg/, '')
             }

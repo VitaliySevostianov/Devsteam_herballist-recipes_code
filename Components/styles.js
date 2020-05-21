@@ -24,7 +24,12 @@ export const tagsStyles = {
 		{
 			color: textColor,
 			margin: 10
-		} 
+        },
+    h1: 
+    {
+        color: textColor,
+        margin: 10
+    } 
 }
 
 export const classesStyles = {
