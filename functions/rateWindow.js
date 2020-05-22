@@ -35,9 +35,9 @@ export const rateWindow = (dd, mm, store) => {
 		  onPress: ()=>{
 			const options = {
 				// AppleAppID:"2193813192",
-				GooglePackageName:"mobi.devsteam.recipes",
+				GooglePackageName: process.env.APPLIACTION_ID,
 				// AmazonPackageName:"com.mywebsite.myapp",
-				OtherAndroidURL:"https://play.google.com/store/apps/details?id=mobi.devsteam.recipes",
+				OtherAndroidURL:`https://play.google.com/store/apps/details?id=${process.env.APPLIACTION_ID}`,
 				preferredAndroidMarket: AndroidMarket.Google,
 				preferInApp:false,
 				openAppStoreIfInAppFails:true,

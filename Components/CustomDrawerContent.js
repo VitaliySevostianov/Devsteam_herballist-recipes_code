@@ -21,7 +21,7 @@ const onShare = async () => {
     try {
       const result = await Share.share({
         message:
-          'https://play.google.com/store/apps/details?id=mobi.devsteam.recipes',
+          `https://play.google.com/store/apps/details?id=${process.env.APPLIACTION_ID}`,
       });
   
       if (result.action === Share.sharedAction) {
@@ -50,9 +50,9 @@ const CustomDrawerContent = (props) => {
             <TouchableOpacity onPress={()=>{
                 const options = {
                     // AppleAppID:"2193813192",
-                    GooglePackageName:"mobi.devsteam.recipes",
+                    GooglePackageName: process.env.APPLIACTION_ID,
                     // AmazonPackageName:"com.mywebsite.myapp",
-                    OtherAndroidURL:"https://play.google.com/store/apps/details?id=mobi.devsteam.recipes",
+                    OtherAndroidURL:`https://play.google.com/store/apps/details?id=${process.env.APPLIACTION_ID}`,
                     preferredAndroidMarket: AndroidMarket.Google,
                     preferInApp:false,
                     openAppStoreIfInAppFails:true,
