@@ -2,6 +2,7 @@ import { Alert } from 'react-native'
 import { changeIsLaterDaysGone, fillPrevDate, userWantRate } from '../Redux/actions'
 import Rate, { AndroidMarket } 								from 'react-native-rate'
 
+import { getBundleId }                       from 'react-native-device-info';
 
 export const rateWindow = (dd, mm, store) => {
 	
@@ -35,9 +36,9 @@ export const rateWindow = (dd, mm, store) => {
 		  onPress: ()=>{
 			const options = {
 				// AppleAppID:"2193813192",
-				GooglePackageName: process.env.APPLIACTION_ID,
+				GooglePackageName: getBundleId(),
 				// AmazonPackageName:"com.mywebsite.myapp",
-				OtherAndroidURL:`https://play.google.com/store/apps/details?id=${process.env.APPLIACTION_ID}`,
+				OtherAndroidURL:`https://play.google.com/store/apps/details?id=${getBundleId()}`,
 				preferredAndroidMarket: AndroidMarket.Google,
 				preferInApp:false,
 				openAppStoreIfInAppFails:true,

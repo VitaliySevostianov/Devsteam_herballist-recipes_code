@@ -8,7 +8,7 @@ import { Dimensions }                                       from 'react-native'
 
 let deviceW = Dimensions.get('window').width
 let deviceH = Dimensions.get('window').height
-import { getBuildNumber, getVersion }                       from 'react-native-device-info';
+import { getBuildNumber, getVersion, getBundleId }                       from 'react-native-device-info';
 
 import {
   DrawerContentScrollView,
@@ -21,7 +21,7 @@ const onShare = async () => {
     try {
       const result = await Share.share({
         message:
-          `https://play.google.com/store/apps/details?id=${process.env.APPLIACTION_ID}`,
+          `https://play.google.com/store/apps/details?id=${getBundleId()}`,
       });
   
       if (result.action === Share.sharedAction) {
@@ -50,9 +50,9 @@ const CustomDrawerContent = (props) => {
             <TouchableOpacity onPress={()=>{
                 const options = {
                     // AppleAppID:"2193813192",
-                    GooglePackageName: process.env.APPLIACTION_ID,
+                    GooglePackageName: getBundleId(),
                     // AmazonPackageName:"com.mywebsite.myapp",
-                    OtherAndroidURL:`https://play.google.com/store/apps/details?id=${process.env.APPLIACTION_ID}`,
+                    OtherAndroidURL:`https://play.google.com/store/apps/details?id=${getBundleId()}`,
                     preferredAndroidMarket: AndroidMarket.Google,
                     preferInApp:false,
                     openAppStoreIfInAppFails:true,
