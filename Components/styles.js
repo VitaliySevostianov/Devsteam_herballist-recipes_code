@@ -10,32 +10,50 @@ const textColor = 'white'
 const borderColor = '#B1DBFC'
 
 export const tagsStyles = {
-	div: 
-		{
-			color: textColor,
-			margin: 10
-		}, 
-	p:
-		{
+    div: 
+        {
             color: textColor,
-            marginTop: 10,
-		}, 
-	h2: 
+            margin: 10
+        }, 
+    p: 
+        {
+            color: textColor,
+            margin: 10
+        },  
+    h1: 
+        {
+            color: textColor,
+            margin: 10
+        }, 
+    h2: 
 		{
 			color: textColor,
 			margin: 10
+		}, 
+    li:
+        {
+            color: textColor
         },
-    h1: 
-    {
-        color: textColor,
-        margin: 10
-    } 
+    ol: 
+        {
+            color: textColor
+        } 
+
 }
 
 export const classesStyles = {
 	'text-right': {
         marginLeft: 10
-    }
+    },
+    'quote':{
+        margin: 0
+    },
+    // 'full-news-content':{
+    //     margin: 0
+    // },
+    // 'news-item-content':{
+    //     margin: 0
+    // }
 }
 
 export const MyTheme = {
@@ -48,9 +66,11 @@ export const MyTheme = {
 
 };
 export const styles = StyleSheet.create({
+    adContainer: { justifyContent: "center", alignItems: "center", backgroundColor: mainColor},
     customSearchTitle: {color: 'white', fontSize: 20, textAlign: 'left'},
     customSearchTitleSecondLine : {color: 'white'},
-    loadingScreen: {flex: 1, 
+    loadingScreen: {
+        flex: 1, 
         flexDirection: "column", 
         backgroundColor: secondaryColor, 
         justifyContent: "center"
@@ -68,7 +88,7 @@ export const styles = StyleSheet.create({
         minHeight: 0,
         maxHeight: deviceH,
         zIndex: 10,
-        width: deviceW,
+        width: deviceW-20,
         maxWidth: deviceH,
         backgroundColor: mainColor
     },

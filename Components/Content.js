@@ -1,5 +1,5 @@
 import React 						from "react"
-import { ScrollView, Image } 	from "react-native"
+import { ScrollView, Image, View } 	from "react-native"
 import { Toolbar } 					from 'react-native-material-ui';
 import HTML 						from 'react-native-render-html';
 import { IGNORED_TAGS } 			from 'react-native-render-html/src/HTMLUtils';
@@ -9,15 +9,18 @@ const Content = ({route, navigation}) => {
 		let {html, image, recipeTitle} = route.params
 
 		return(
-			<ScrollView style = {styles.content}>
+			<View style ={{flex: 1}}>
 				<Toolbar
-					leftElement="arrow-back"
-					centerElement={recipeTitle}
-					onLeftElementPress ={() => navigation.pop(1)}
+				leftElement="arrow-back"
+				centerElement={recipeTitle}
+				onLeftElementPress ={() => navigation.pop(1)}
 				/>
-				<Image style = {styles.bigImage} source = {image} />
-				<HTML html={html} ignoredTags={[...IGNORED_TAGS, 'img']} classesStyles = {classesStyles} tagsStyles = {tagsStyles} />
-			</ScrollView>
+				<ScrollView style = {styles.content}>
+		
+					<Image style = {styles.bigImage} source = {image} />
+					<HTML html={html} ignoredTags={[...IGNORED_TAGS, 'img', 'iframe', 'a']} classesStyles = {classesStyles} tagsStyles = {tagsStyles} />
+				</ScrollView>
+			</View>
 		)
 };
 

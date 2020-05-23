@@ -124,7 +124,7 @@ const ContentList = ({filter, content, images, navigation}) => {
 				keyExtractor={item => `${item.id}`}
 			>
 			</FlatList>
-			<View style = {{ justifyContent: "center", alignItems: "center"}}>
+			<View style = {styles.adContainer}>
 				<AdMobBanner
 					adSize="SMART_BANNER"
 					adUnitID= {Platform.OS == 'ios' ? "ca-app-pub-8323348147242911/9664734587" : "ca-app-pub-8323348147242911/7178172049"}
