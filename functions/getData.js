@@ -25,10 +25,12 @@ export const getData = (store, table) => {
                     }
                     
                 }else{
-                    images[i] = `${(rows.item(i).html.match(/\/\w*\/\d*.jpg/))}`
+                    images[i] = `${(rows.item(i).html.match(/\/\w{4,9}\/\d{1,5}.jpg/))}`
                 }
                 images[i] = images[i].replace(/\.jpg/, '')
             }
+                    
+         
 
             store.dispatch(fillPage(items))
             store.dispatch(fillImages(images))
