@@ -8,7 +8,7 @@ import { Dimensions }                                       from 'react-native'
 
 let deviceW = Dimensions.get('window').width
 let deviceH = Dimensions.get('window').height
-import { getBuildNumber, getVersion, getBundleId }                       from 'react-native-device-info';
+import { getBuildNumber, getVersion, getBundleId }          from 'react-native-device-info';
 
 import {
   DrawerContentScrollView,

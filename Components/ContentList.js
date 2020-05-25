@@ -21,7 +21,7 @@ import { AdMobBanner } 										from 'react-native-admob'
 
 import Rate, { AndroidMarket } 								from 'react-native-rate'
 import { useIsFocused } 									from "@react-navigation/native"
-
+import { getBundleId }          							from 'react-native-device-info';
 
 
 const mapStateToProps = (state) => {
@@ -50,14 +50,14 @@ const ContentList = ({filter, content, images, navigation}) => {
 					text: "Оценить",
 					onPress: ()=>{
 						const options = {
-							AppleAppID:"2193813192",
-							GooglePackageName:"com.mywebsite.myapp",
-							AmazonPackageName:"com.mywebsite.myapp",
-							OtherAndroidURL:"http://www.randomappstore.com/app/47172391",
+							// AppleAppID:"2193813192",
+							GooglePackageName: getBundleId(),
+							// AmazonPackageName:"com.mywebsite.myapp",
+							OtherAndroidURL:`https://play.google.com/store/apps/details?id=${getBundleId()}`,
 							preferredAndroidMarket: AndroidMarket.Google,
 							preferInApp:false,
 							openAppStoreIfInAppFails:true,
-							fallbackPlatformURL:"http://www.mywebsite.com/myapp.html",
+							// fallbackPlatformURL:"http://www.mywebsite.com/myapp.html",
 						}
 						Rate.rate(options, success=>{
 							if (success) {

@@ -5,7 +5,7 @@ import Rate, { AndroidMarket } 								from 'react-native-rate'
 import { getBundleId }                       from 'react-native-device-info';
 
 export const rateWindow = (dd, mm, store) => {
-	
+	console.log(store.getState())
     if(dd - store.getState().prevDate.dd >= 10 || mm - store.getState().prevDate.mm != 0){
       store.dispatch(changeIsLaterDaysGone(true))
     }
@@ -21,9 +21,9 @@ export const rateWindow = (dd, mm, store) => {
         store.dispatch(changeIsLaterDaysGone(false))
         store.dispatch(fillPrevDate(
         {
-        dd: dd,
-        mm: mm
-      }
+			dd: dd,
+			mm: mm
+		}
       ))},
 		  style: "cancel"
 		},
