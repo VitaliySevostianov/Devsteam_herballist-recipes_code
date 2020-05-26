@@ -47,7 +47,7 @@ export const reducer = (state = initialState, action) => {
             ...state,
             prev: state.prev.length < 3 ? [...state.prev, action.payload] : [state.prev[1], state.prev[2], state.prev[0] = action.payload,]
         }
-        case FILL_PREV_DATE: console.log(action.payload) ;return {
+        case FILL_PREV_DATE: return {
             ...state,
             prevDate: {
                 ...state.prevDate,
@@ -65,7 +65,7 @@ export const reducer = (state = initialState, action) => {
         }
         case UPDATE_LAUNCH_COUNTER: return {
             ...state,
-            launchCounter: state.launchCounter += 1,
+            launchCounter: action.payload,
         }
         default: return state
     }

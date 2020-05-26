@@ -3,11 +3,11 @@ import { fillPage, fillImages } from '../Redux/actions'
 
 
 export const getData = (store, table) => {
-    // console.log(db)
+
     db.transaction(tx => {
-        // console.log(tx)
+
         tx.executeSql(`SELECT * FROM ${table}`, [], ((tx, results) => {
-            console.log(tx)
+
             const rows = results.rows;
 
             let items = []

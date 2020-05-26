@@ -50,8 +50,9 @@ export const userWantRate = (data) => {
     }
 }
 
-export const updateLaunchCounter = () => {
+export const updateLaunchCounter = (data) => {
     return {
         type: UPDATE_LAUNCH_COUNTER,
+        payload: data
     }
 }
