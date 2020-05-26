@@ -5,7 +5,7 @@ import { Share,  Text, View, TouchableOpacity }             from 'react-native'
 import Icon                                                 from 'react-native-vector-icons/FontAwesome';
 
 import { Dimensions }                                       from 'react-native'
-
+import { store } from '../Redux/reducers'
 let deviceW = Dimensions.get('window').width
 let deviceH = Dimensions.get('window').height
 import { getBuildNumber, getVersion, getBundleId }          from 'react-native-device-info';
@@ -47,6 +47,7 @@ const CustomDrawerContent = (props) => {
           </View>
           
           <View>
+            <Text>`${store.getState().launchCounter}`</Text>
             <TouchableOpacity onPress={()=>{
                 const options = {
                     // AppleAppID:"2193813192",

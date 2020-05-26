@@ -124,7 +124,6 @@ const SearchList = ({content, images, navigation, filter, prev, route, changePre
                 data = {searchFilter == `${/(?:)/i}` ? prevData : searchData}
                 renderItem = {({item}) => {
                     if(isSearchActive){
-                        console.log(item)
                         return(
                             <TouchableOpacity onPress = {() => { 
                                 changeIsSearchActive(false)

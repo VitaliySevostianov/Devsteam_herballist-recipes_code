@@ -33,7 +33,6 @@ const mapStateToProps = (state) => {
 
 const ContentList = ({filter, content, images, navigation}) => {
 	const isFocused = useIsFocused();
-	console.log(images)
 	useEffect(() => {
 		if(isFocused){
 		const backAction = () => {
