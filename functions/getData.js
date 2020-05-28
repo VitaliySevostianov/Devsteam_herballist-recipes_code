@@ -3,12 +3,11 @@ import { fillPage, fillImages } from '../Redux/actions'
 
 
 export const getData = (store, table) => {
-
+    console.log(db)
     db.transaction(tx => {
-
         tx.executeSql(`SELECT * FROM ${table}`, [], ((tx, results) => {
-
-            const rows = results.rows;
+            
+            const rows = results.rows
 
             let items = []
             let images = []
@@ -17,7 +16,7 @@ export const getData = (store, table) => {
                 items.push({
                     ...rows.item(i),
                 });
-                if(table == 'Article'){
+                if(table == 'Article'){ //В DB травника другие поля
                     if(rows.item(i).img_path == null){
                         images[i] = `FILLER`
                     }else{

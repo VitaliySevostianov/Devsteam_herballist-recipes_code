@@ -65,7 +65,7 @@ export const reducer = (state = initialState, action) => {
         }
         case UPDATE_LAUNCH_COUNTER: return {
             ...state,
-            launchCounter: state.launchCounter += 1,
+            launchCounter: action.payload,
         }
         default: return state
     }

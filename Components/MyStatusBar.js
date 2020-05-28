@@ -14,8 +14,8 @@ const MyStatusBar = () => {
 		);
       }
     return(
-        <View style = {styles.statusBar, {height: Platform.OS === 'ios' ? (isIphoneXorAbove() ? 39 : 20) : 0}}>
-            <StatusBar barStyle="light-content" backgroundColor="#2196f3" />
+        <View style = {styles.statusBar, {backgroundColor: "#2196f3", height: Platform.OS === 'ios' ? (isIphoneXorAbove() ? 44 : 20) : 0}}>
+            <StatusBar barStyle="light-content" backgroundColor = "#2196f3"/>
         </View>
     )
 }

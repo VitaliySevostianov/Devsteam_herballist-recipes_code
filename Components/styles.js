@@ -66,6 +66,7 @@ export const MyTheme = {
 
 };
 export const styles = StyleSheet.create({
+    safeArea: {flex: 1, backgroundColor: secondaryColor},
     adContainer: { justifyContent: "center", alignItems: "center", backgroundColor: mainColor},
     customSearchTitle: {color: 'white', fontSize: 20, textAlign: 'left'},
     customSearchTitleSecondLine : {color: 'white'},

@@ -1,11 +1,14 @@
 import { Alert } from 'react-native'
-import { changeIsLaterDaysGone, fillPrevDate, userWantRate } from '../Redux/actions'
+import { changeIsLaterDaysGone, fillPrevDate, userWantRate, updateLaunchCounter } from '../Redux/actions'
 import Rate, { AndroidMarket } 								from 'react-native-rate'
 
 import { getBundleId }                       from 'react-native-device-info';
 
 export const rateWindow = (dd, mm, store) => {
-	console.log(store.getState().launchCounter)
+
+	let launchCounter = store.getState().launchCounter + 1
+	console.log(launchCounter)
+	store.dispatch(updateLaunchCounter(launchCounter))
     if(dd - store.getState().prevDate.dd >= 10 || mm - store.getState().prevDate.mm != 0){
       store.dispatch(changeIsLaterDaysGone(true))
     }
