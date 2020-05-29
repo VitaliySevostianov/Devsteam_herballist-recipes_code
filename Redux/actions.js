@@ -5,7 +5,8 @@ import {
     FILL_PREV_DATE, 
     CHANGE_IS_LATER_DAYS_GONE,
     USER_WANT_RATE,
-    UPDATE_LAUNCH_COUNTER
+    UPDATE_LAUNCH_COUNTER,
+    CHANGE_CURRENT_LANG,
 }                                  from './types.js'
 
 export const fillPage = (data) => {
@@ -53,6 +54,12 @@ export const userWantRate = (data) => {
 export const updateLaunchCounter = (data) => {
     return {
         type: UPDATE_LAUNCH_COUNTER,
+        payload: data
+    }
+}
+export const changeCurrentLang = (data) => {
+    return {
+        type: CHANGE_CURRENT_LANG,
         payload: data
     }
 }

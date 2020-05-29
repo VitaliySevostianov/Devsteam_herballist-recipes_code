@@ -13,6 +13,7 @@ export const stackComponent = (component) => () => {
           <Stack.Navigator headerMode = 'none'>
             <Stack.Screen 
               name={'Список'}
+              options = {(params) => params}
               component={component} 
             />
             <Stack.Screen

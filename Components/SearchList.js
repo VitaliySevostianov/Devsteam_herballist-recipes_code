@@ -6,12 +6,14 @@ import { styles }                                   from './styles'
 
 import { fillPrev }                                 from '../Redux/actions'
 
+import T from '../../content/translation/i18n'
 
 const mapStateToProps = (state) => {
 	return {
         content: state.content,
         images: state.images,
-        prev: state.prev
+        prev: state.prev,
+        currentLang: state.currentLang,
 	}
   }
 
@@ -25,10 +27,11 @@ const mapDispatchToProps = dispatch => {
 
 const CustomSearchTitle = ({title, resultLength}) => {
     title == '"(?:)"' ? 'Все рецепты' : title
+    let secondLine = `${T('Результаты поиска:')} ${resultLength}`
     return (
         <View >
             <Text style = {styles.customSearchTitle} numberOfLines = {1}>{title}</Text>
-            <Text style = {styles.customSearchTitleSecondLine}>Результаты поиска: {resultLength}</Text>
+            <Text style = {styles.customSearchTitleSecondLine}>{secondLine}</Text>
         </View>
     )
 }
@@ -87,7 +90,7 @@ const SearchList = ({content, images, navigation, filter, prev, route, changePre
                     isSearchActive = {isSearchActive}
                     leftElement="menu"
                     onLeftElementPress ={() => navigation.toggleDrawer()}
-                    centerElement={filter == 'Поиск' ? <CustomSearchTitle title = {route.params.title == '"(?:)"' ? 'Все рецепты' : `${route.params.title}`} resultLength = {searchDataLength} ></CustomSearchTitle> : filter}
+                    centerElement={filter == 'Поиск' ? <CustomSearchTitle title = {route.params.title == '"(?:)"' ? 'Все рецепты' : `${route.params.title}`} resultLength = {searchDataLength}></CustomSearchTitle> : T(filter)}
                     searchable={{
                         autoFocus: true,
                         placeholder: 'Поиск',

@@ -1,8 +1,10 @@
 import { Alert } from 'react-native'
-import { changeIsLaterDaysGone, fillPrevDate, userWantRate, updateLaunchCounter } from '../Redux/actions'
-import Rate, { AndroidMarket } 								from 'react-native-rate'
+import { changeIsLaterDaysGone, fillPrevDate, userWantRate, updateLaunchCounter } 	from '../Redux/actions'
+import Rate, { AndroidMarket } 														from 'react-native-rate'
 
-import { getBundleId }                       from 'react-native-device-info';
+import { getBundleId }                       										from 'react-native-device-info';
+
+import T from '../../content/translation/i18n'
 
 export const rateWindow = (dd, mm, store) => {
 
@@ -15,11 +17,11 @@ export const rateWindow = (dd, mm, store) => {
 
 	if(store.getState().isLaterDaysGone && store.getState().userWantRate && store.getState().launchCounter % 10 == 0){
     Alert.alert(
-	  "Оцените приложение",
-	  "Если Вам понравилось приложение, пожалуйста, найдите время, чтобы оценить его. Это не займет больше минуты. Спасибо за вашу поддержку!",
+	  T("Оцените приложение"),
+	  T("rate message"),
 	  [
 		{
-		  text: "Позже",
+		  text: T("Позже"),
 		  onPress: () => {
         store.dispatch(changeIsLaterDaysGone(false))
         store.dispatch(fillPrevDate(
@@ -31,11 +33,11 @@ export const rateWindow = (dd, mm, store) => {
 		  style: "cancel"
 		},
 		{ 
-		  text: "Никогда", 
+		  text: T("Никогда"), 
 		  onPress: () => store.dispatch(userWantRate(false)) 
 		},
 		{ 
-		  text: "Оценить",
+		  text: T("Оценить"),
 		  onPress: ()=>{
 			const options = {
 				// AppleAppID:"2193813192",

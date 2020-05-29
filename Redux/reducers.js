@@ -7,6 +7,7 @@ import {
     CHANGE_IS_LATER_DAYS_GONE,
     USER_WANT_RATE,
     UPDATE_LAUNCH_COUNTER,
+    CHANGE_CURRENT_LANG,
 }                                              from './types.js'
 
 
@@ -27,6 +28,7 @@ const initialState = {
     images: {},
     prev: [],
     prevDate: {},
+    currentLang: 'ru',
     isLaterDaysGone: true,
     userWantRate: true,
     launchCounter: 0
@@ -66,6 +68,10 @@ export const reducer = (state = initialState, action) => {
         case UPDATE_LAUNCH_COUNTER: return {
             ...state,
             launchCounter: action.payload,
+        }
+        case CHANGE_CURRENT_LANG: return {
+            ...state,
+            currentLang: action.payload
         }
         default: return state
     }

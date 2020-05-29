@@ -23,31 +23,33 @@ import Rate, { AndroidMarket } 								from 'react-native-rate'
 import { useIsFocused } 									from "@react-navigation/native"
 import { getBundleId }          							from 'react-native-device-info';
 
+import T from '../../content/translation/i18n'
 
 const mapStateToProps = (state) => {
 	return{
 	  content: state.content,
-	  images: state.images
+	  images: state.images,
+	  currentLang: state.currentLang
 	}
   }
 
-const ContentList = ({filter, content, images, navigation}) => {
-	console.log(images)
+const ContentList = ({filter, content, images, currentLang, navigation}) => {
+
 	const isFocused = useIsFocused();
 	useEffect(() => {
 		if(isFocused){
 		const backAction = () => {
 			Alert.alert(
-				"Выход",
-				"Не хотите оценить приложение перед выходом?",
+				T("Выход"),
+				T("exit message"),
 				[
 					{
-					text: "Отмена",
+					text: T("Отмена"),
 					onPress: () => null,
 					style: "cancel"
 					},
 					{
-					text: "Оценить",
+					text: T("Оценить"),
 					onPress: ()=>{
 						const options = {
 							// AppleAppID:"2193813192",
@@ -68,7 +70,7 @@ const ContentList = ({filter, content, images, navigation}) => {
 						},
 					style: "cancel"
 					},
-					{ text: "Выйти", onPress: () => BackHandler.exitApp() }
+					{ text: T("Выйти"), onPress: () => BackHandler.exitApp() }
 				],
 				{ cancelable: true }
 			);
@@ -82,17 +84,32 @@ const ContentList = ({filter, content, images, navigation}) => {
 	
 
 
+	filter = T(filter)
 
 	const section = new RegExp(filter)
 	let data = []
-	for(let i = 0; i < content.length; i++){
-		if(section.test(content[i].section)){
-			data.push({
-				...content[i],
-				img: images[i]
-			})
+	if(currentLang == 'en'){
+		data = []
+		for(let i = content.length/2; i < content.length; i++){
+			if(section.test(content[i].section)){
+				data.push({
+					...content[i],
+					img: images[i]
+				})
+			}
+		}
+	}else if(currentLang == 'ru'){
+		data = []
+		for(let i = 0; i < content.length/2; i++){
+			if(section.test(content[i].section)){
+				data.push({
+					...content[i],
+					img: images[i]
+				})
+			}
 		}
 	}
+
 	
 	return(
 		<View style ={{flex: 1}}>
