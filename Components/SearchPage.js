@@ -1,4 +1,4 @@
-import React                         						from "react"
+import React, { useContext }                         		from "react"
 import { connect }                                       	from 'react-redux'
 import { Text, FlatList, View, Image, TouchableOpacity } 	from "react-native"
 
@@ -10,6 +10,7 @@ import { CommonActions, useNavigationState, useIsFocused } 	from '@react-navigat
 
 import { AdMobBanner } 										from 'react-native-admob'
 
+import { LocalizationContext } from '../localizationContext'
 
 const mapStateToProps = (state) => {
 	return{
@@ -19,7 +20,7 @@ const mapStateToProps = (state) => {
   }
 
 const SearchPage = ({navigation, route}) => {
-
+	const {translations} = useContext(LocalizationContext)
 	const isFocused = useIsFocused();
 	const state = useNavigationState(state => state)
 
@@ -39,7 +40,7 @@ const SearchPage = ({navigation, route}) => {
 		return (
 			<View style = {styles.notFoundCard}>
 				<Text style = {styles.notFoundText}>
-					Ничего не найдено
+					{translations.nothing_was_found}
 				</Text>
 			</View>
 		)

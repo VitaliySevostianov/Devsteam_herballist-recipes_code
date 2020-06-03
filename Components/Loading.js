@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text,  View } from 'react-native'
+import { View, ActivityIndicator } from 'react-native'
 
 import { styles } from './styles'
 
@@ -7,7 +7,7 @@ const Loading = () => {
 
     return(
         <View style = {styles.loadingScreen}>
-            <Text style = {styles.loadingText}>Загрузка...</Text>
+            <ActivityIndicator size = {100} color = '#0ffa02'/>
         </View>
     )
 }

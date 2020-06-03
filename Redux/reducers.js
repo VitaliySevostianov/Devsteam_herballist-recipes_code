@@ -19,7 +19,7 @@ import { persistStore, persistReducer }        from 'redux-persist'
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['prev', 'prevDate', 'isLaterDaysGone', 'userWantRate', 'images', 'launchCounter']
+  whitelist: ['prev', 'prevDate', 'isLaterDaysGone', 'userWantRate', 'images', 'launchCounter', 'currentLang']
 }
 
 

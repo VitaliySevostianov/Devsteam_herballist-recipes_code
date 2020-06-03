@@ -1,4 +1,4 @@
-import React,	{useEffect}									from "react"
+import React, { useEffect, useContext }						from "react"
 
 import { 
 	Text, 
@@ -23,33 +23,33 @@ import Rate, { AndroidMarket } 								from 'react-native-rate'
 import { useIsFocused } 									from "@react-navigation/native"
 import { getBundleId }          							from 'react-native-device-info';
 
-import T from '../../content/translation/i18n'
+import {LocalizationContext} 								from '../localizationContext'
 
 const mapStateToProps = (state) => {
 	return{
 	  content: state.content,
 	  images: state.images,
-	  currentLang: state.currentLang
 	}
   }
 
-const ContentList = ({filter, content, images, currentLang, navigation}) => {
 
+const ContentList = ({filter, content, images, navigation}) => {
+	const {translations, appLanguage} = useContext(LocalizationContext)
 	const isFocused = useIsFocused();
 	useEffect(() => {
 		if(isFocused){
 		const backAction = () => {
 			Alert.alert(
-				T("Выход"),
-				T("exit message"),
+				translations.exit,
+				translations.exit_message,
 				[
 					{
-					text: T("Отмена"),
+					text: translations.cancel,
 					onPress: () => null,
 					style: "cancel"
 					},
 					{
-					text: T("Оценить"),
+					text: translations.rate_us,
 					onPress: ()=>{
 						const options = {
 							// AppleAppID:"2193813192",
@@ -70,7 +70,7 @@ const ContentList = ({filter, content, images, currentLang, navigation}) => {
 						},
 					style: "cancel"
 					},
-					{ text: T("Выйти"), onPress: () => BackHandler.exitApp() }
+					{ text: translations.exit_out, onPress: () => BackHandler.exitApp() }
 				],
 				{ cancelable: true }
 			);
@@ -84,11 +84,11 @@ const ContentList = ({filter, content, images, currentLang, navigation}) => {
 	
 
 
-	filter = T(filter)
+	filter = translations[filter]
 
 	const section = new RegExp(filter)
 	let data = []
-	if(currentLang == 'en'){
+	if(appLanguage == 'en'){
 		data = []
 		for(let i = content.length/2; i < content.length; i++){
 			if(section.test(content[i].section)){
@@ -98,7 +98,7 @@ const ContentList = ({filter, content, images, currentLang, navigation}) => {
 				})
 			}
 		}
-	}else if(currentLang == 'ru'){
+	}else if(appLanguage == 'ru'){
 		data = []
 		for(let i = 0; i < content.length/2; i++){
 			if(section.test(content[i].section)){

@@ -1,4 +1,4 @@
-import React, { useState }                          from "react"
+import React, { useState, useContext }                          from "react"
 import { connect }                                  from 'react-redux'
 import { FlatList, TouchableOpacity, View, Text }   from "react-native"
 import { ListItem, Toolbar }                        from 'react-native-material-ui';
@@ -6,7 +6,7 @@ import { styles }                                   from './styles'
 
 import { fillPrev }                                 from '../Redux/actions'
 
-import T from '../../content/translation/i18n'
+import { LocalizationContext } from '../localizationContext'
 
 const mapStateToProps = (state) => {
 	return {
@@ -26,8 +26,8 @@ const mapDispatchToProps = dispatch => {
 }
 
 const CustomSearchTitle = ({title, resultLength}) => {
-    title == '"(?:)"' ? 'Все рецепты' : title
-    let secondLine = `${T('Результаты поиска:')} ${resultLength}`
+    const {translations} = useContext(LocalizationContext)
+    let secondLine = `${translations.search_amount} ${resultLength}`
     return (
         <View >
             <Text style = {styles.customSearchTitle} numberOfLines = {1}>{title}</Text>
@@ -38,7 +38,7 @@ const CustomSearchTitle = ({title, resultLength}) => {
 
 
 const SearchList = ({content, images, navigation, filter, prev, route, changePrev}) => {
-
+    const {translations} = useContext(LocalizationContext)
     const [searchFilter, setSearchFilter] = useState(route != undefined ? `${route.params.title}`.replace(/\//,'').replace(/\/i/,'') : /(?:)/i)
     const [isSearchActive, changeIsSearchActive] = useState(false)
    
@@ -90,7 +90,7 @@ const SearchList = ({content, images, navigation, filter, prev, route, changePre
                     isSearchActive = {isSearchActive}
                     leftElement="menu"
                     onLeftElementPress ={() => navigation.toggleDrawer()}
-                    centerElement={filter == 'Поиск' ? <CustomSearchTitle title = {route.params.title == '"(?:)"' ? 'Все рецепты' : `${route.params.title}`} resultLength = {searchDataLength}></CustomSearchTitle> : T(filter)}
+                    centerElement={filter == 'Поиск' ? <CustomSearchTitle title = {route.params.title == '"(?:)"' ? `${translations.all_recipes}` : `${route.params.title}`} resultLength = {searchDataLength}></CustomSearchTitle> : translations[filter]}
                     searchable={{
                         autoFocus: true,
                         placeholder: 'Поиск',

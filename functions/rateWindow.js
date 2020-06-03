@@ -4,9 +4,7 @@ import Rate, { AndroidMarket } 														from 'react-native-rate'
 
 import { getBundleId }                       										from 'react-native-device-info';
 
-import T from '../../content/translation/i18n'
-
-export const rateWindow = (dd, mm, store) => {
+export const rateWindow = (dd, mm, store, translations) => {
 
 	let launchCounter = store.getState().launchCounter + 1
 	console.log(launchCounter)
@@ -17,11 +15,11 @@ export const rateWindow = (dd, mm, store) => {
 
 	if(store.getState().isLaterDaysGone && store.getState().userWantRate && store.getState().launchCounter % 10 == 0){
     Alert.alert(
-	  T("Оцените приложение"),
-	  T("rate message"),
+	  translations.rate_app,
+	  translations.rate_message,
 	  [
 		{
-		  text: T("Позже"),
+		  text: translations.later,
 		  onPress: () => {
         store.dispatch(changeIsLaterDaysGone(false))
         store.dispatch(fillPrevDate(
@@ -33,11 +31,11 @@ export const rateWindow = (dd, mm, store) => {
 		  style: "cancel"
 		},
 		{ 
-		  text: T("Никогда"), 
+		  text: translations.never, 
 		  onPress: () => store.dispatch(userWantRate(false)) 
 		},
 		{ 
-		  text: T("Оценить"),
+		  text: translations.rate_us,
 		  onPress: ()=>{
 			const options = {
 				// AppleAppID:"2193813192",
