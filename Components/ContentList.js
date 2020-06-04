@@ -85,12 +85,13 @@ const ContentList = ({filter, content, images, navigation}) => {
 
 
 	filter = translations[filter]
-
+	// console.log(section)
 	const section = new RegExp(filter)
 	let data = []
+	let enStartLength = content.length%2 != 0 ? (Math.floor(content.length/2)-2) : content.length/2
 	if(appLanguage == 'en'){
 		data = []
-		for(let i = content.length/2; i < content.length; i++){
+		for(let i = enStartLength; i < content.length; i++){
 			if(section.test(content[i].section)){
 				data.push({
 					...content[i],
