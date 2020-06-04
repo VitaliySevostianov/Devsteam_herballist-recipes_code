@@ -6,8 +6,6 @@ import Icon                                                 from 'react-native-v
 
 import { Dimensions }                                       from 'react-native'
 
-
-let deviceH = Dimensions.get('window').height
 import { getBuildNumber, getVersion, getBundleId }          from 'react-native-device-info';
 
 import {
@@ -17,12 +15,13 @@ import {
 
 import Rate, { AndroidMarket }                              from 'react-native-rate'
 
-import { store } from '../Redux/reducers'
+import { store } 											from '../Redux/reducers'
 
-import { changeCurrentLang } from '../Redux/actions'
+import { changeCurrentLang } 								from '../Redux/actions'
 
 import { LocalizationContext } 								from '../localizationContext'
 
+let deviceH = Dimensions.get('window').height
 
 const onShare = async () => {
 	try {
