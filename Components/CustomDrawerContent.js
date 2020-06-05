@@ -46,12 +46,14 @@ const onShare = async () => {
 
 
 const CustomDrawerContent = (props) => {
-	const {translations, setAppLanguage, appLanguage} = useContext(LocalizationContext)
-
+	const {translations, setAppLanguage, appLanguage, initializeAppLanguage} = useContext(LocalizationContext)
 	let switchState = false
 	if(store.getState().currentLang == 'en' || appLanguage == 'en'){
+    setAppLanguage('en')
 		switchState = true
-	}
+	}else{
+    setAppLanguage('ru')
+  }
 	const [isEnabled, setIsEnabled] = useState(switchState)
 	const toggleSwitch = () => setIsEnabled(prevState => {
 		let newLanguage = appLanguage == 'en' ? 'ru' : 'en'
@@ -60,12 +62,7 @@ const CustomDrawerContent = (props) => {
 		return !prevState
 	})
 
-	if(store.getState().currentLang == 'en')
-	{
-		setAppLanguage('en')
-	}else{
-		setAppLanguage('ru')
-	}
+
 
     return (
       <DrawerContentScrollView {...props} >

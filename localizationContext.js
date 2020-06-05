@@ -3,8 +3,8 @@ import translations, { DEFAULT_LANGUAGE } from '../content/translations';
 import AsyncStorage from '@react-native-community/async-storage';
 import * as RNLocalize from 'react-native-localize';
 
-// import { changeCurrentLang } from './Redux/actions'
-// import {store} from './Redux/reducers'
+import { changeCurrentLang } from './Redux/actions'
+import {store} from './Redux/reducers'
 
 const APP_LANGUAGE = 'appLanguage';
 
@@ -39,7 +39,7 @@ export const LocalizationProvider = ({ children }) => {
           return true;
         }
       });
-      // if(currentLanguage == 'ru'){
+      // if(localeCode == 'ru'){
       //   store.dispatch(changeCurrentLang('ru'))
       // }else{
       //   store.dispatch(changeCurrentLang('en'))
