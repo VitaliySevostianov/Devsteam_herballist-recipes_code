@@ -9,6 +9,8 @@ const activeColor = '#075795'
 const textColor = 'white'
 const borderColor = '#B1DBFC'
 
+// style = {{container: {backgroundColor: 'green'}}} // Toolbar styling
+
 export const tagsStyles = {
     div: 
         {
@@ -66,10 +68,24 @@ export const MyTheme = {
 
 };
 export const styles = StyleSheet.create({
-    safeArea: {flex: 1, backgroundColor: secondaryColor},
-    adContainer: { justifyContent: "center", alignItems: "center", backgroundColor: mainColor},
-    customSearchTitle: {color: 'white', fontSize: 20, textAlign: 'left'},
-    customSearchTitleSecondLine : {color: 'white'},
+    safeArea: {
+        flex: 1, 
+        backgroundColor: 
+        secondaryColor
+    },
+    adContainer: { 
+        justifyContent: "center", 
+        alignItems: "center", 
+        backgroundColor: mainColor
+    },
+    customSearchTitle: {
+        color: 'white', 
+        fontSize: 20, 
+        textAlign: 'left'
+    },
+    customSearchTitleSecondLine : {
+        color: 'white'
+    },
     loadingScreen: {
         flex: 1, 
         flexDirection: "column", 

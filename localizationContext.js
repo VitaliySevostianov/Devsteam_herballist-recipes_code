@@ -3,9 +3,6 @@ import translations, { DEFAULT_LANGUAGE } from '../content/translations';
 import AsyncStorage from '@react-native-community/async-storage';
 import * as RNLocalize from 'react-native-localize';
 
-import { changeCurrentLang } from './Redux/actions'
-import {store} from './Redux/reducers'
-// console.log()
 const APP_LANGUAGE = 'app';
 
 export const LocalizationContext = createContext({
@@ -40,18 +37,8 @@ export const LocalizationProvider = ({ children }) => {
           return true;
         }
       });
-      // if(localeCode == 'ru'){
-      //   store.dispatch(changeCurrentLang('ru'))
-      // }else{
-      //   store.dispatch(changeCurrentLang('en'))
-      // }
       setLanguage(localeCode);
     } else {
-      // if(currentLanguage == 'ru'){
-      //   store.dispatch(changeCurrentLang('ru'))
-      // }else{
-      //   store.dispatch(changeCurrentLang('en'))
-      // }
       setLanguage(currentLanguage);
     }
   };

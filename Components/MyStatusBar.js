@@ -1,7 +1,12 @@
 import React from 'react'
-import { Dimensions, Platform, View, StatusBar } from 'react-native'
+import { 
+	Dimensions, 
+	Platform, 
+	View, 
+	StatusBar 
+} 					from 'react-native'
 
-import { styles } from './styles'
+import { styles } 	from './styles'
 
 const MyStatusBar = () => {
 	const isIphoneXorAbove = () => {

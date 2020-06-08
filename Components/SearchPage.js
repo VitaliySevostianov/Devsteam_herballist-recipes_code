@@ -10,7 +10,7 @@ import { CommonActions, useNavigationState, useIsFocused } 	from '@react-navigat
 
 import { AdMobBanner } 										from 'react-native-admob'
 
-import { LocalizationContext } from '../localizationContext'
+import { LocalizationContext } 								from '../localizationContext'
 
 const mapStateToProps = (state) => {
 	return{

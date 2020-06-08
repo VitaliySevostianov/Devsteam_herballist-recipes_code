@@ -1,8 +1,12 @@
-import { Alert } from 'react-native'
-import { changeIsLaterDaysGone, fillPrevDate, userWantRate, updateLaunchCounter } 	from '../Redux/actions'
-import Rate, { AndroidMarket } 														from 'react-native-rate'
+import { Alert } 				from 'react-native'
+import { 
+	changeIsLaterDaysGone, 
+	fillPrevDate, 
+	userWantRate, 
+	updateLaunchCounter } 		from '../Redux/actions'
+import Rate, { AndroidMarket } 	from 'react-native-rate'
 
-import { getBundleId }                       										from 'react-native-device-info';
+import { getBundleId }          from 'react-native-device-info';
 
 export const rateWindow = (dd, mm, store, translations) => {
 

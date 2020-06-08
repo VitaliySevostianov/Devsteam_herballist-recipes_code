@@ -3,7 +3,11 @@ import { ScrollView, Image, View } 	from "react-native"
 import { Toolbar } 					from 'react-native-material-ui';
 import HTML 						from 'react-native-render-html';
 import { IGNORED_TAGS } 			from 'react-native-render-html/src/HTMLUtils';
-import {styles, tagsStyles, classesStyles } 		from './styles'
+import {
+	styles, 
+	tagsStyles, 
+	classesStyles 
+} 									from './styles'
 
 const Content = ({route, navigation}) => {
 		let {html, image, recipeTitle} = route.params

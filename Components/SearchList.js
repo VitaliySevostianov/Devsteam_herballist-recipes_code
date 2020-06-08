@@ -1,4 +1,4 @@
-import React, { useState, useContext }                          from "react"
+import React, { useState, useContext }              from "react"
 import { connect }                                  from 'react-redux'
 import { FlatList, TouchableOpacity, View, Text }   from "react-native"
 import { ListItem, Toolbar }                        from 'react-native-material-ui';
@@ -6,7 +6,7 @@ import { styles }                                   from './styles'
 
 import { fillPrev }                                 from '../Redux/actions'
 
-import { LocalizationContext } from '../localizationContext'
+import { LocalizationContext }                      from '../localizationContext'
 
 const mapStateToProps = (state) => {
 	return {

@@ -1,6 +1,6 @@
-import React, { useState, useContext, useEffect }                      from 'react'
+import React, { useContext, useEffect }                     from 'react'
 
-import { Share,  Text, View, TouchableOpacity, Switch, Button }     from 'react-native'
+import { Share,  Text, View, TouchableOpacity, Button }     from 'react-native'
 
 import Icon                                                 from 'react-native-vector-icons/FontAwesome';
 
@@ -16,8 +16,6 @@ import {
 import Rate, { AndroidMarket }                              from 'react-native-rate'
 
 import { store } 											from '../Redux/reducers'
-
-import { changeCurrentLang } 								from '../Redux/actions'
 
 import { LocalizationContext } 								from '../localizationContext'
 
@@ -46,33 +44,21 @@ const onShare = async () => {
 
 
 const CustomDrawerContent = (props) => {
-  const {translations, setAppLanguage, appLanguage, initializeAppLanguage} = useContext(LocalizationContext)
-  let switchState
+	const {translations, setAppLanguage, appLanguage, initializeAppLanguage} = useContext(LocalizationContext)
 
-
-  useEffect(() => {
+	useEffect(() => {
 
 		initializeAppLanguage()
 
-  }, [store.getState().currentLang, appLanguage])
+	}, [store.getState().currentLang, appLanguage])
 
-  console.log('app ', appLanguage)
-  console.log('store ',store.getState().currentLang)
-
-
-
+	console.log('app ', appLanguage)
+	console.log('store ',store.getState().currentLang)
 
 	const toggleSwitch = () => {
-
-
 		let newLanguage = appLanguage == 'en' ? 'ru' : 'en'
-	  	// store.dispatch(changeCurrentLang(newLanguage))
 	 	setAppLanguage(newLanguage)
-	  	
-
 	}
-
-
 
 	return (
 	  <DrawerContentScrollView {...props} >
