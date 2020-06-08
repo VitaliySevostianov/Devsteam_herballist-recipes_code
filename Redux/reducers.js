@@ -19,7 +19,7 @@ import { persistStore, persistReducer }        from 'redux-persist'
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['prev', 'prevDate', 'isLaterDaysGone', 'userWantRate', 'images', 'launchCounter', 'currentLang']
+  whitelist: ['prev', 'prevDate', 'isLaterDaysGone', 'userWantRate', 'images', 'launchCounter', ]
 }
 
 
@@ -28,7 +28,7 @@ const initialState = {
     images: {},
     prev: [],
     prevDate: {},
-    currentLang: 'ru',
+    // currentLang: '',
     isLaterDaysGone: true,
     userWantRate: true,
     launchCounter: 0
@@ -69,10 +69,10 @@ export const reducer = (state = initialState, action) => {
             ...state,
             launchCounter: action.payload,
         }
-        case CHANGE_CURRENT_LANG: return {
-            ...state,
-            currentLang: action.payload
-        }
+        // case CHANGE_CURRENT_LANG: return {
+        //     ...state,
+        //     currentLang: action.payload
+        // }
         default: return state
     }
 }

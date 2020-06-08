@@ -5,18 +5,18 @@ import * as RNLocalize from 'react-native-localize';
 
 import { changeCurrentLang } from './Redux/actions'
 import {store} from './Redux/reducers'
-
-const APP_LANGUAGE = 'appLanguage';
+// console.log()
+const APP_LANGUAGE = 'app';
 
 export const LocalizationContext = createContext({
   translations,
   setAppLanguage: () => {},
-  appLanguage: DEFAULT_LANGUAGE,
+  appLanguage: APP_LANGUAGE,
   initializeAppLanguage: () => {},
 });
 
 export const LocalizationProvider = ({ children }) => {
-  const [appLanguage, setAppLanguage] = useState(DEFAULT_LANGUAGE);
+  const [appLanguage, setAppLanguage] = useState(APP_LANGUAGE);
 
   const setLanguage = language => {
     translations.setLanguage(language);
@@ -26,7 +26,8 @@ export const LocalizationProvider = ({ children }) => {
 
   const initializeAppLanguage = async () => {
     const currentLanguage = await AsyncStorage.getItem(APP_LANGUAGE);
-
+    console.log('currentLanguage: ', currentLanguage);
+      
     if (!currentLanguage) {
       let localeCode = DEFAULT_LANGUAGE;
       const supportedLocaleCodes = translations.getAvailableLanguages();

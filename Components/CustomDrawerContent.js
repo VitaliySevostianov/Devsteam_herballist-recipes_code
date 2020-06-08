@@ -1,6 +1,6 @@
-import React, { useState, useContext }                      from 'react'
+import React, { useState, useContext, useEffect }                      from 'react'
 
-import { Share,  Text, View, TouchableOpacity, Switch }     from 'react-native'
+import { Share,  Text, View, TouchableOpacity, Switch, Button }     from 'react-native'
 
 import Icon                                                 from 'react-native-vector-icons/FontAwesome';
 
@@ -46,90 +46,98 @@ const onShare = async () => {
 
 
 const CustomDrawerContent = (props) => {
-	const {translations, setAppLanguage, appLanguage, initializeAppLanguage} = useContext(LocalizationContext)
-	let switchState = false
-	if(store.getState().currentLang == 'en' || appLanguage == 'en'){
-    setAppLanguage('en')
-		switchState = true
-	}else{
-    setAppLanguage('ru')
-  }
-	const [isEnabled, setIsEnabled] = useState(switchState)
-	const toggleSwitch = () => setIsEnabled(prevState => {
+  const {translations, setAppLanguage, appLanguage, initializeAppLanguage} = useContext(LocalizationContext)
+  let switchState
+
+
+  useEffect(() => {
+
+		initializeAppLanguage()
+
+  }, [store.getState().currentLang, appLanguage])
+
+  console.log('app ', appLanguage)
+  console.log('store ',store.getState().currentLang)
+
+
+
+
+	const toggleSwitch = () => {
+
+
 		let newLanguage = appLanguage == 'en' ? 'ru' : 'en'
-		store.dispatch(changeCurrentLang(newLanguage))
-		setAppLanguage(newLanguage)
-		return !prevState
-	})
+	  	// store.dispatch(changeCurrentLang(newLanguage))
+	 	setAppLanguage(newLanguage)
+	  	
+
+	}
 
 
 
-    return (
-      <DrawerContentScrollView {...props} >
-        <View style = {{flex: 1, flexDirection: "column", justifyContent: 'space-around', height: deviceH}}>
+	return (
+	  <DrawerContentScrollView {...props} >
+		<View style = {{flex: 1, flexDirection: "column", justifyContent: 'space-around', height: deviceH}}>
 			<View>
 				<DrawerItemList {...props}/>
 			</View>
-			
+
 			<View>
-             <View style ={{alignSelf: "center", flexDirection: "row", paddingBottom: 25}}>
-              	<Text style = {{color: 'white'}}>Ru</Text>
-				<Switch 
-					onValueChange={toggleSwitch}
-					value={isEnabled}
-				/>
-				<Text style = {{color: 'white'}}>En</Text>
-             </View>
-            <TouchableOpacity onPress={()=>{
-                const options = {
-                    // AppleAppID:"2193813192",
-                    GooglePackageName: getBundleId(),
-                    // AmazonPackageName:"com.mywebsite.myapp",
-                    
-                    OtherAndroidURL:`https://play.google.com/store/apps/details?id=${getBundleId()}`,
-                    preferredAndroidMarket: AndroidMarket.Google,
-                    preferInApp:false,
-                    openAppStoreIfInAppFails:true,
-                    // fallbackPlatformURL:"http://www.mywebsite.com/myapp.html",
-                }
-                Rate.rate(options, success=>{
-                    if (success) {
-                    // this technically only tells us if the user successfully went to the Review Page. Whether they actually did anything, we do not know.
-                    console.log(success)
-                    }
-                })
-                }} 
-            >
-                <Text style = {{alignSelf: "center", color: 'white', fontSize: 16, marginBottom: 5}}>{translations.rate_app}</Text>
-                <View style = {{flexDirection: 'row', justifyContent: 'space-around',  marginBottom: 10}}>
-                    <Icon name = "star" size = {25} backgroundColor='rgba(0,0,0,0)' color = 'white' />
-                    <Icon name = 'star' size = {25} backgroundColor='rgba(0,0,0,0)' color = 'white'/>
-                    <Icon name = 'star' size = {25} backgroundColor='rgba(0,0,0,0)' color = 'white'/>
-                    <Icon name = 'star' size = {25} backgroundColor='rgba(0,0,0,0)' color = 'white'/>
-                    <Icon name = 'star' size = {25} backgroundColor='rgba(0,0,0,0)' color = 'white'/>
-                </View>
-            </TouchableOpacity>
-            <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <View>
-                  <Text  style = {{color: 'white', marginLeft: 15,}}>ver: {getVersion()}</Text>
-                  <Text  style = {{color: 'white', marginLeft: 15,}}>build: {getBuildNumber()}</Text>
-                </View>
-                <View style ={{marginRight: 15}}>
-                  <Icon.Button 
-                    name="share" 
-                    size = {30} 
-                    backgroundColor="#72C0FC" 
-                    color="white"
-                    onPress = {() => onShare()}
-                  >
-                    {translations.share}
-                  </Icon.Button>
-                </View>
-            </View>
-          </View>
-        </View>
-      </DrawerContentScrollView>
-    );
+			 <View style ={{alignSelf: "center", flexDirection: "row", paddingBottom: 25}}>
+				<Button
+				  title = {translations.translate}
+				  onPress = {() => toggleSwitch()}
+				></Button>
+			 </View>
+			<TouchableOpacity onPress={()=>{
+				const options = {
+					// AppleAppID:"2193813192",
+					GooglePackageName: getBundleId(),
+					// AmazonPackageName:"com.mywebsite.myapp",
+
+					OtherAndroidURL:`https://play.google.com/store/apps/details?id=${getBundleId()}`,
+					preferredAndroidMarket: AndroidMarket.Google,
+					preferInApp:false,
+					openAppStoreIfInAppFails:true,
+					// fallbackPlatformURL:"http://www.mywebsite.com/myapp.html",
+				}
+				Rate.rate(options, success=>{
+					if (success) {
+					// this technically only tells us if the user successfully went to the Review Page. Whether they actually did anything, we do not know.
+					console.log(success)
+					}
+				})
+				}}
+			>
+				<Text style = {{alignSelf: "center", color: 'white', fontSize: 16, marginBottom: 5}}>{translations.rate_app}</Text>
+				<View style = {{flexDirection: 'row', justifyContent: 'space-around',  marginBottom: 10}}>
+					<Icon name = "star" size = {25} backgroundColor='rgba(0,0,0,0)' color = 'white' />
+					<Icon name = 'star' size = {25} backgroundColor='rgba(0,0,0,0)' color = 'white'/>
+					<Icon name = 'star' size = {25} backgroundColor='rgba(0,0,0,0)' color = 'white'/>
+					<Icon name = 'star' size = {25} backgroundColor='rgba(0,0,0,0)' color = 'white'/>
+					<Icon name = 'star' size = {25} backgroundColor='rgba(0,0,0,0)' color = 'white'/>
+				</View>
+			</TouchableOpacity>
+			<View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
+				<View>
+				  <Text  style = {{color: 'white', marginLeft: 15,}}>ver: {getVersion()}</Text>
+				  <Text  style = {{color: 'white', marginLeft: 15,}}>build: {getBuildNumber()}</Text>
+				</View>
+				<View style ={{marginRight: 15}}>
+				  <Icon.Button
+					name="share"
+					size = {30}
+					backgroundColor="#72C0FC"
+					color="white"
+					onPress = {() => onShare()}
+				  >
+					{translations.share}
+				  </Icon.Button>
+				</View>
+			</View>
+		  </View>
+		</View>
+	  </DrawerContentScrollView>
+	);
   }
 
 export default CustomDrawerContent
