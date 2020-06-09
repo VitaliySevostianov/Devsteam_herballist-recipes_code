@@ -1,3 +1,3 @@
-import App from '../content/App'
+import App from '../content/App';
 
-export default App
+export default App;

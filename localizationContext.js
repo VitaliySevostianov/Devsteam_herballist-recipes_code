@@ -6,52 +6,52 @@ import * as RNLocalize from 'react-native-localize';
 const APP_LANGUAGE = 'app';
 
 export const LocalizationContext = createContext({
-  translations,
-  setAppLanguage: () => {},
-  appLanguage: APP_LANGUAGE,
-  initializeAppLanguage: () => {},
+	translations,
+	setAppLanguage: () => {},
+	appLanguage: APP_LANGUAGE,
+	initializeAppLanguage: () => {},
 });
 
 export const LocalizationProvider = ({ children }) => {
-  const [appLanguage, setAppLanguage] = useState(APP_LANGUAGE);
+	const [appLanguage, setAppLanguage] = useState(APP_LANGUAGE);
 
-  const setLanguage = language => {
-    translations.setLanguage(language);
-    setAppLanguage(language);
-    AsyncStorage.setItem(APP_LANGUAGE, language);
-  };
+	const setLanguage = language => {
+		translations.setLanguage(language);
+		setAppLanguage(language);
+		AsyncStorage.setItem(APP_LANGUAGE, language);
+	};
 
-  const initializeAppLanguage = async () => {
-    const currentLanguage = await AsyncStorage.getItem(APP_LANGUAGE);
-    console.log('currentLanguage: ', currentLanguage);
-      
-    if (!currentLanguage) {
-      let localeCode = DEFAULT_LANGUAGE;
-      const supportedLocaleCodes = translations.getAvailableLanguages();
-      const phoneLocaleCodes = RNLocalize.getLocales().map(
-        locale => locale.languageCode,
-      );
-      phoneLocaleCodes.some(code => {
-        if (supportedLocaleCodes.includes(code)) {
-          localeCode = code;
-          return true;
-        }
-      });
-      setLanguage(localeCode);
-    } else {
-      setLanguage(currentLanguage);
-    }
-  };
+	const initializeAppLanguage = async () => {
+		const currentLanguage = await AsyncStorage.getItem(APP_LANGUAGE);
+		console.log('currentLanguage: ', currentLanguage);
 
-  return (
-    <LocalizationContext.Provider
-      value={{
-        translations,
-        setAppLanguage: setLanguage,
-        appLanguage,
-        initializeAppLanguage,
-      }}>
-      {children}
-    </LocalizationContext.Provider>
-  );
+		if (!currentLanguage) {
+			let localeCode = DEFAULT_LANGUAGE;
+			const supportedLocaleCodes = translations.getAvailableLanguages();
+			const phoneLocaleCodes = RNLocalize.getLocales().map(
+				locale => locale.languageCode,
+			);
+			phoneLocaleCodes.some(code => {
+				if (supportedLocaleCodes.includes(code)) {
+					localeCode = code;
+					return true;
+				}
+			});
+			setLanguage(localeCode);
+		} else {
+			setLanguage(currentLanguage);
+		}
+	};
+
+	return (
+		<LocalizationContext.Provider
+			value={{
+				translations,
+				setAppLanguage: setLanguage,
+				appLanguage,
+				initializeAppLanguage,
+			}}>
+			{children}
+		</LocalizationContext.Provider>
+	);
 };
