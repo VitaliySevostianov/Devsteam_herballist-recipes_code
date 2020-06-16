@@ -21,6 +21,8 @@ import Rate, { AndroidMarket } from 'react-native-rate';
 
 import { store } from '../Redux/reducers';
 
+import { AppleAppId, ASLink } from '../../content/linkToAppStore'
+console.log(AppleAppId)
 import { LocalizationContext } from '../localizationContext';
 
 let deviceH = Dimensions.get('window').height;
@@ -28,7 +30,7 @@ let deviceH = Dimensions.get('window').height;
 const onShare = async () => {
 	try {
 		const result = await Share.share({
-			message: /* Platform.OS == 'ios' ?  : */ `https://play.google.com/store/apps/details?id=${getBundleId()}`,
+			message:  Platform.OS == 'ios' ?  ASLink :  `https://play.google.com/store/apps/details?id=${getBundleId()}`,
 		});
 
 		if (result.action === Share.sharedAction) {
@@ -93,9 +95,8 @@ const CustomDrawerContent = props => {
 					<TouchableOpacity
 						onPress={() => {
 							const options = {
-								// AppleAppID:"2193813192",
+								AppleAppID: AppleAppId,
 								GooglePackageName: getBundleId(),
-								// AmazonPackageName:"com.mywebsite.myapp",
 
 								OtherAndroidURL: `https://play.google.com/store/apps/details?id=${getBundleId()}`,
 								preferredAndroidMarket: AndroidMarket.Google,

@@ -7,6 +7,8 @@ import {
 } from '../Redux/actions';
 import Rate, { AndroidMarket } from 'react-native-rate';
 
+import { AppleAppId } from '../../content/linkToAppStore'
+
 import { getBundleId } from 'react-native-device-info';
 
 export const rateWindow = (dd, mm, store, translations) => {
@@ -50,9 +52,9 @@ export const rateWindow = (dd, mm, store, translations) => {
 					text: translations.rate_us,
 					onPress: () => {
 						const options = {
-							// AppleAppID:"2193813192",
+							AppleAppID: AppleAppId,
 							GooglePackageName: getBundleId(),
-							// AmazonPackageName:"com.mywebsite.myapp",
+
 							OtherAndroidURL: `https://play.google.com/store/apps/details?id=${getBundleId()}`,
 							preferredAndroidMarket: AndroidMarket.Google,
 							preferInApp: false,

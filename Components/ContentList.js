@@ -23,6 +23,8 @@ import Rate, { AndroidMarket } from 'react-native-rate';
 import { useIsFocused } from '@react-navigation/native';
 import { getBundleId } from 'react-native-device-info';
 
+import { AppleAppId } from '../../content/linkToAppStore'
+
 import { LocalizationContext } from '../localizationContext';
 
 const mapStateToProps = state => {
@@ -51,7 +53,7 @@ const ContentList = ({ filter, content, images, navigation }) => {
 							text: translations.rate_us,
 							onPress: () => {
 								const options = {
-									// AppleAppID:"2193813192",
+									AppleAppID: AppleAppId,
 									GooglePackageName: getBundleId(),
 									// AmazonPackageName:"com.mywebsite.myapp",
 									OtherAndroidURL: `https://play.google.com/store/apps/details?id=${getBundleId()}`,
