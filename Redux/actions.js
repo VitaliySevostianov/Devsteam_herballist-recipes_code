@@ -6,6 +6,7 @@ import {
 	CHANGE_IS_LATER_DAYS_GONE,
 	USER_WANT_RATE,
 	UPDATE_LAUNCH_COUNTER,
+	ACCEPT_WARNING,
 } from './types.js';
 
 const fillPage = data => {
@@ -57,6 +58,13 @@ const updateLaunchCounter = data => {
 	};
 };
 
+const acceptWarning = data => {
+	return {
+		type: ACCEPT_WARNING,
+		payload: data,
+	};
+};
+
 export {
 	fillPage,
 	fillImages,
@@ -65,4 +73,5 @@ export {
 	changeIsLaterDaysGone,
 	userWantRate,
 	updateLaunchCounter,
+	acceptWarning,
 };

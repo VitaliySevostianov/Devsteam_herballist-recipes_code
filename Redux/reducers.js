@@ -7,6 +7,7 @@ import {
 	CHANGE_IS_LATER_DAYS_GONE,
 	USER_WANT_RATE,
 	UPDATE_LAUNCH_COUNTER,
+	ACCEPT_WARNING,
 } from './types.js';
 
 import AsyncStorage from '@react-native-community/async-storage';
@@ -23,6 +24,7 @@ const persistConfig = {
 		'userWantRate',
 		'images',
 		'launchCounter',
+		'isWarningAccepted',
 	],
 };
 
@@ -34,6 +36,7 @@ const initialState = {
 	isLaterDaysGone: true,
 	userWantRate: true,
 	launchCounter: 0,
+	isWarningAccepted: false,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -83,6 +86,12 @@ export const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				launchCounter: action.payload,
+			};
+		case ACCEPT_WARNING:
+			console.log(action.payload);
+			return {
+				...state,
+				isWarningAccepted: action.payload,
 			};
 		default:
 			return state;

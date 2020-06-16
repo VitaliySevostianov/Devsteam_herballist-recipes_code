@@ -54,7 +54,7 @@ const SearchList = ({
 			: /(?:)/i,
 	);
 	const [isSearchActive, changeIsSearchActive] = useState(false);
-
+	console.log(isSearchActive);
 	let newSearchData = [];
 	let searchData = [];
 	let prevData = [];
@@ -95,7 +95,7 @@ const SearchList = ({
 				searchDataLength == 0 ? searchDataLength++ : searchDataLength;
 		}
 	}
-
+	console.log(searchFilter == `${/(?:)/i}` ? prevData : searchData[0]);
 	return (
 		<View>
 			<Toolbar

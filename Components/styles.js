@@ -61,11 +61,12 @@ export const MyTheme = {
 };
 export const styles = StyleSheet.create({
 	toolbarAbsolutePosition: {
-		position: 'absolute',
-		top: 0,
-		bottom: 0,
-		left: 0,
-		right: 0,
+		// position: 'absolute',
+		// top: 0,
+		// bottom: 0,
+		// left: 0,
+		// right: 0,
+		zIndex: 10,
 	},
 	contentListAbsolutePosition: {
 		position: 'absolute',
@@ -73,6 +74,7 @@ export const styles = StyleSheet.create({
 		bottom: 0,
 		left: 0,
 		right: 0,
+		// zIndex: 10,
 	},
 
 	safeArea: {
