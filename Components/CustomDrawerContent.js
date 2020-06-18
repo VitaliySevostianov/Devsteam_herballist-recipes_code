@@ -21,16 +21,20 @@ import Rate, { AndroidMarket } from 'react-native-rate';
 
 import { store } from '../Redux/reducers';
 
-import { AppleAppId, ASLink } from '../../content/linkToAppStore'
-console.log(AppleAppId)
+import { AppleAppId, ASLink } from '../../content/linkToAppStore';
+console.log(AppleAppId);
 import { LocalizationContext } from '../localizationContext';
+import { mainColor } from '../../content/styles';
 
 let deviceH = Dimensions.get('window').height;
 
 const onShare = async () => {
 	try {
 		const result = await Share.share({
-			message:  Platform.OS == 'ios' ?  ASLink :  `https://play.google.com/store/apps/details?id=${getBundleId()}`,
+			message:
+				Platform.OS == 'ios'
+					? ASLink
+					: `https://play.google.com/store/apps/details?id=${getBundleId()}`,
 		});
 
 		if (result.action === Share.sharedAction) {
@@ -175,7 +179,7 @@ const CustomDrawerContent = props => {
 							<Icon.Button
 								name="share"
 								size={30}
-								backgroundColor="#72C0FC"
+								backgroundColor={mainColor}
 								color="white"
 								onPress={() => onShare()}>
 								{translations.share}

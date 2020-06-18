@@ -3,7 +3,12 @@ import { ScrollView, Image, View, Text } from 'react-native';
 import { Toolbar } from 'react-native-material-ui';
 import HTML from 'react-native-render-html';
 import { IGNORED_TAGS } from 'react-native-render-html/src/HTMLUtils';
-import { styles, tagsStyles, classesStyles } from './styles';
+import {
+	styles,
+	tagsStyles,
+	classesStyles,
+	toolbarTheme,
+} from '../../content/styles';
 import { LocalizationContext } from '../localizationContext';
 
 import { isHerbalist } from '../../content/isHerbalist'; //Для отображения дисклеймера в конце статей Приложения Травник
@@ -19,6 +24,7 @@ const Content = ({ route, navigation }) => {
 		return (
 			<View style={{ flex: 1 }}>
 				<Toolbar
+					style={toolbarTheme}
 					leftElement="arrow-back"
 					centerElement={recipeTitle}
 					onLeftElementPress={() => navigation.pop(1)}
@@ -47,6 +53,7 @@ const Content = ({ route, navigation }) => {
 		return (
 			<View style={{ flex: 1 }}>
 				<Toolbar
+					style={toolbarTheme}
 					leftElement="arrow-back"
 					centerElement={recipeTitle}
 					onLeftElementPress={() => navigation.pop(1)}

@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import SearchPage from './Components/SearchPage';
 import SearchList from './Components/SearchList';
 
-import { styles } from './Components/styles';
+import { styles } from '../content/styles';
 
 const Search = ({ route, navigation }) => {
 	return (

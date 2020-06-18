@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { connect } from 'react-redux';
 import { FlatList, TouchableOpacity, View, Text } from 'react-native';
 import { ListItem, Toolbar } from 'react-native-material-ui';
-import { styles } from './styles';
+import { styles, toolbarTheme } from '../../content/styles';
 
 import { fillPrev } from '../Redux/actions';
 
@@ -99,6 +99,7 @@ const SearchList = ({
 	return (
 		<View>
 			<Toolbar
+				style={toolbarTheme}
 				isSearchActive={isSearchActive}
 				leftElement="menu"
 				onLeftElementPress={() => navigation.toggleDrawer()}
@@ -218,7 +219,4 @@ const SearchList = ({
 		</View>
 	);
 };
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps,
-)(SearchList);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchList);

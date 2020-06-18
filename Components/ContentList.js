@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 
 import { imagesData } from '../../android/app/src/main/assets/images/photos/index';
 
-import { styles } from './styles';
+import { styles } from '../../content/styles';
 
 import { AdMobBanner } from 'react-native-admob';
 
@@ -23,7 +23,7 @@ import Rate, { AndroidMarket } from 'react-native-rate';
 import { useIsFocused } from '@react-navigation/native';
 import { getBundleId } from 'react-native-device-info';
 
-import { AppleAppId } from '../../content/linkToAppStore'
+import { AppleAppId } from '../../content/linkToAppStore';
 
 import { LocalizationContext } from '../localizationContext';
 

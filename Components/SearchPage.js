@@ -4,7 +4,7 @@ import { Text, FlatList, View, Image, TouchableOpacity } from 'react-native';
 
 import { imagesData } from '../../android/app/src/main/assets/images/photos/index';
 
-import { styles } from './styles';
+import { styles } from '../../content/styles';
 
 import {
 	CommonActions,

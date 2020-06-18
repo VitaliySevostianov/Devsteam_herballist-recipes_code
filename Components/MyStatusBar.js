@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dimensions, Platform, View, StatusBar } from 'react-native';
 
-import { styles } from './styles';
+import { styles } from '../../content/styles';
 
 const MyStatusBar = () => {
 	const isIphoneXorAbove = () => {
@@ -12,7 +12,8 @@ const MyStatusBar = () => {
 			!Platform.isTVOS &&
 			(dimen.height === 812 ||
 				dimen.width === 812 ||
-				(dimen.height === 896 || dimen.width === 896))
+				dimen.height === 896 ||
+				dimen.width === 896)
 		);
 	};
 	return (
